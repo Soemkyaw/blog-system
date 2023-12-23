@@ -1,0 +1,31 @@
+{
+  "posts": [
+    {
+      "title": "title 1",
+      "body": "post body 1",
+      "id": 1
+    },
+    {
+      "title": "title 2",
+      "body": "post body 2",
+      "id": 2
+    },
+    {
+      "title": "title 3",
+      "body": "post body 3",
+      "id": 3
+    },
+    {
+      "title": "test",
+      "body": "testing body",
+      "tags": [
+        "html",
+        "css",
+        "js",
+        "php",
+        "laravel"
+      ],
+      "id": 4
+    }
+  ]
+}
