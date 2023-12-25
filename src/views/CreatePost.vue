@@ -4,7 +4,7 @@
     <form @submit.prevent="handleSubmit">
       <div class="input-box">
         <label class="title">Title</label>
-        <input class="post-body" type="text" v-model="title" />
+        <input class="post-body" type="text" v-model="title" required/>
       </div>
       <div class="input-box">
         <label class="title">Body</label>
@@ -13,6 +13,7 @@
           cols="30"
           rows="10"
           v-model="body"
+          required
         ></textarea>
       </div>
       <div class="input-box">
@@ -37,8 +38,10 @@
 
 <script>
 import { ref } from 'vue';
+import { useRouter } from 'vue-router';
 export default {
-    setup() {
+  setup() {
+        let rounter = useRouter()
         let title = ref('')
         let body = ref('')
         let tag = ref('')
@@ -66,6 +69,7 @@ export default {
                         }
                     )
                 })
+                rounter.push({name:"home"})
                 if (response.status === 404) {
                     throw new Error("Url Not Found")
                 }
@@ -89,13 +93,11 @@ export default {
   width: 100%;
   padding: 10px;
   border: none;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid #eee;
   margin: 10px 0 10px 0;
 }
 .hit {
   display: block;
-  /* color: crimson; */
-  /* color: #FFAB81; */
   color: #a9aead;
 }
 .createBtn {
@@ -123,5 +125,6 @@ button:hover {
   background-color: rgba(225, 225, 225, 0.75);
   color: black;
   border-radius: 10px;
+  cursor: pointer;
 }
 </style>

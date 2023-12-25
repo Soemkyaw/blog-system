@@ -1,6 +1,15 @@
 <template>
+  <Nav></Nav>
   <router-view/>
 </template>
+
+<script>
+import Nav from './components/Nav'
+export default {
+  components: { Nav },
+    
+  }
+</script>
 
 <style>
 #app {
@@ -19,10 +28,13 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #ddd;
+  text-decoration: none;
+  margin-right: 20px;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  /* color: #42b983; */
+  color: black;
 }
 </style>

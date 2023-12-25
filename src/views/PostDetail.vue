@@ -8,6 +8,11 @@
         <div>
           <h3 class="title">{{ post.title }}</h3>
           <p class="post-body">{{ post.body }}</p>
+          <!-- {{ post }} -->
+          <div class="pill" v-for="tag in post.tags" :key="tag">
+            <router-link :to="{name:'Tag',params:{tag:tag}}">{{ tag }}</router-link>
+          </div>
+          
         </div>
     </div>
     <div v-else>
