@@ -1,6 +1,5 @@
-
-import { initializeApp } from "firebase/compat/app";
-import { getFirestore } from "firebase/compat/firestore"
+import firebase from "firebase/app"
+import "firebase/firestore"
 
 const firebaseConfig = {
   apiKey: "AIzaSyDQXZSNzE0pq5fpJyfhHEe4eGnHqCEd2rk",
@@ -11,9 +10,11 @@ const firebaseConfig = {
   appId: "1:327298733836:web:e00ddb7fe9fd92a8675b29"
 };
 
-// Initialize Firebase
-initializeApp(firebaseConfig);
-let db = getFirestore()
+// init firebase
+firebase.initializeApp(firebaseConfig)
 
-export { db }
+// database setup
+let db = firebase.firestore()
+let timestamp = firebase.firestore.FieldValue.serverTimestamp
 
+export {db,timestamp}

@@ -1,5 +1,5 @@
 <template>
-  <h3>Tag Cloud</h3>
+  <h1>Tag Cloud</h1>
   <div v-for="tag in uniqueTag" :key="tag" class="uniqueTag">
     <router-link :to="{ name: 'Tag', params: { tag } }">{{ tag }}</router-link>
   </div>

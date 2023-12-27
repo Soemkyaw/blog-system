@@ -1,6 +1,6 @@
 <template>
   <div class="detail">
-    <h1>Detail {{ id }}</h1>
+    <h1>Detail</h1>
     <div v-if="post">
         <div v-if="err">
           {{ err }}
@@ -12,7 +12,7 @@
           <div class="pill" v-for="tag in post.tags" :key="tag">
             <router-link :to="{name:'Tag',params:{tag:tag}}">{{ tag }}</router-link>
           </div>
-          
+            <button class="delete" @click="deletePost">Delete</button>
         </div>
     </div>
     <div v-else>
@@ -24,19 +24,29 @@
 <script>
 import Spinner from '../components/Spinner'
 import getSinglePost from '../composable/getSinglePost'
+import { useRouter } from "vue-router"
+import { db } from "../firebase/config"
 export default {
   components: { Spinner },
     props: ['id'],
-    setup(props) {
+  setup(props) {
+        let router = useRouter()
         let { post, err, load } = getSinglePost(props.id)
 
-        load();
+      load();
+      let deletePost = async() => {
+        await db.collection("posts").doc(props.id).delete();
+        router.push({ name: "home" })
+      }
 
-        return {post,err}
+        return {post,err,deletePost}
     }
 }
 </script>
 
 <style>
-  
+  .delete{
+    display: block;
+    margin: 20px auto;
+  }
 </style>
